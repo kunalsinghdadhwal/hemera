@@ -1,6 +1,31 @@
 [package]
 name = "hemera"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+license = "MIT"
+description = "Inevitable timing for Rust functions—measure execution with divine precision."
+repository = "https://github.com/kunalsinghdadhwal/hemera"
+keywords = ["macro", "timing", "profiling"]
+categories = ["development-tools::profiling"]
+exclude = ["examples/"]
+
+[lib]
+proc-macro = true
 
 [dependencies]
+proc-macro2 = "1.0.103"
+quote = "1.0.42"
+syn = { version = "2.0.109", features = ["full"] }
+tracing = { version = "0.1.41", optional = true }
+
+[dev-dependencies]
+trybuild = { version = "1", features = ["diff"] }
+criterion = "0.5"
+
+[[bench]]
+name = "overhead"
+harness = false
+
+[features]
+default = []
+tracing = ["dep:tracing"]

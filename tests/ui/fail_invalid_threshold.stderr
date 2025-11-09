@@ -1,0 +1,7 @@
+error: Threshold must end with 'ms', 'us', 'ns', or 's'
+ --> tests/ui/fail_invalid_threshold.rs:4:1
+  |
+4 | #[hemera(threshold = "invalid")]
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: this error originates in the attribute macro `hemera` (in Nightly builds, run with -Z macro-backtrace for more info)
