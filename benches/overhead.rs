@@ -32,5 +32,9 @@ fn benchmark_overhead(c: &mut Criterion) {
     group.finish();
 }
 
-criterion_group!(benches, benchmark_overhead);
+criterion_group! {
+    name = benches;
+    config = Criterion::default().with_output_color(true);
+    targets = benchmark_overhead
+}
 criterion_main!(benches);

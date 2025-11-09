@@ -209,10 +209,19 @@ Check out the [examples](examples/) directory for more usage examples:
 Run examples with:
 
 ```bash
-cd examples
 cargo run --example basic
 cargo run --example async_example
 ```
+
+## 🏃 Benchmarks
+
+Run benchmarks to measure the macro's overhead:
+
+```bash
+cargo bench
+```
+
+Benchmark results are saved as HTML reports in `target/criterion/`. Open `target/criterion/report/index.html` in your browser to view detailed performance analysis with charts and statistics.
 
 ---
 

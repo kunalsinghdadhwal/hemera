@@ -1,0 +1,17 @@
+[package]
+name = "hemera-examples"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[example]]
+name = "basic"
+path = "basic.rs"
+
+[[example]]
+name = "async_example"
+path = "async_example.rs"
+
+[dependencies]
+hemera = { path = ".." }
+tokio = { version = "1", features = ["full"] }

@@ -135,7 +135,8 @@ fn parse_threshold(threshold_str: &str) -> syn::Result<proc_macro2::TokenStream>
 
     let (value_str, unit) = if let Some(stripped) = threshold_str.strip_suffix("ms") {
         (stripped, "millis")
-    } else if let Some(stripped) = threshold_str.strip_suffix("us")
+    } else if let Some(stripped) = threshold_str
+        .strip_suffix("us")
         .or_else(|| threshold_str.strip_suffix("µs"))
     {
         (stripped, "micros")
