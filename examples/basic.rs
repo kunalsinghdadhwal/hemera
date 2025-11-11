@@ -1,6 +1,6 @@
-use hemera::hemera;
+use hemera::measure_time;
 
-#[hemera]
+#[measure_time]
 fn fast_function() -> u32 {
     let mut sum = 0;
     for i in 0..1000 {
@@ -9,18 +9,18 @@ fn fast_function() -> u32 {
     sum
 }
 
-#[hemera(name = "SlowOperation", level = "debug")]
+#[measure_time(name = "SlowOperation", level = "debug")]
 fn slow_function() {
     std::thread::sleep(std::time::Duration::from_millis(100));
 }
 
-#[hemera(threshold = "50ms")]
+#[measure_time(threshold = "50ms")]
 fn conditional_log(ms: u64) {
     // Only logs if execution time exceeds 50ms
     std::thread::sleep(std::time::Duration::from_millis(ms));
 }
 
-#[hemera(name = "CustomName", level = "debug", threshold = "10ms")]
+#[measure_time(name = "CustomName", level = "debug", threshold = "10ms")]
 fn all_options() {
     std::thread::sleep(std::time::Duration::from_millis(20));
 }

@@ -1,25 +1,25 @@
-use hemera::hemera;
+use hemera::measure_time;
 
-#[hemera]
+#[measure_time]
 fn simple_sync() -> i32 {
     42
 }
 
-#[hemera]
+#[measure_time]
 async fn simple_async() -> String {
     "hello".to_string()
 }
 
-#[hemera(name = "Custom")]
+#[measure_time(name = "Custom")]
 fn with_name() {}
 
-#[hemera(level = "debug")]
+#[measure_time(level = "debug")]
 fn with_level() {}
 
-#[hemera(threshold = "10ms")]
+#[measure_time(threshold = "10ms")]
 fn with_threshold() {}
 
-#[hemera(name = "Test", level = "debug", threshold = "5ms")]
+#[measure_time(name = "Test", level = "debug", threshold = "5ms")]
 fn all_attrs() {}
 
 fn main() {}

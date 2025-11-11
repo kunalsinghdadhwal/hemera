@@ -1,7 +1,7 @@
-use hemera::hemera;
+use hemera::measure_time;
 
 // Invalid threshold format
-#[hemera(threshold = "invalid")]
+#[measure_time(threshold = "invalid")]
 fn invalid_threshold() {}
 
 fn main() {}

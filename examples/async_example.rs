@@ -1,25 +1,25 @@
-use hemera::hemera;
+use hemera::measure_time;
 use tokio::time::{sleep, Duration};
 
-#[hemera]
+#[measure_time]
 async fn fetch_data() -> String {
     sleep(Duration::from_millis(100)).await;
     "Data fetched successfully".to_string()
 }
 
-#[hemera(name = "AsyncOperation")]
+#[measure_time(name = "AsyncOperation")]
 async fn process_data(data: String) -> usize {
     sleep(Duration::from_millis(50)).await;
     data.len()
 }
 
-#[hemera(threshold = "30ms")]
+#[measure_time(threshold = "30ms")]
 async fn maybe_slow_async(ms: u64) -> &'static str {
     sleep(Duration::from_millis(ms)).await;
     "Done"
 }
 
-#[hemera(name = "ComplexAsync", level = "debug", threshold = "10ms")]
+#[measure_time(name = "ComplexAsync", level = "debug", threshold = "10ms")]
 async fn complex_async() -> Result<i32, String> {
     sleep(Duration::from_millis(25)).await;
     Ok(42)

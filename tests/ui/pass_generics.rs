@@ -1,16 +1,16 @@
-use hemera::hemera;
+use hemera::measure_time;
 
-#[hemera]
+#[measure_time]
 fn generic_function<T: Clone>(value: T) -> T {
     value.clone()
 }
 
-#[hemera]
+#[measure_time]
 async fn generic_async<T: std::fmt::Display>(value: T) -> String {
     format!("{}", value)
 }
 
-#[hemera(name = "GenericWithAttrs")]
+#[measure_time(name = "GenericWithAttrs")]
 fn generic_with_attrs<T, U>(a: T, b: U) -> (T, U) {
     (a, b)
 }

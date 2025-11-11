@@ -5,9 +5,9 @@
 //! ## Usage
 //!
 //! ```rust
-//! use hemera::hemera;
+//! use hemera::measure_time;
 //!
-//! #[hemera]
+//! #[measure_time]
 //! fn calculate_fibonacci(n: u32) -> u32 {
 //!     if n <= 1 {
 //!         n
@@ -16,12 +16,12 @@
 //!     }
 //! }
 //!
-//! #[hemera(name = "CustomTimer", level = "debug")]
+//! #[measure_time(name = "CustomTimer", level = "debug")]
 //! fn slow_function() {
 //!     std::thread::sleep(std::time::Duration::from_millis(100));
 //! }
 //!
-//! #[hemera(threshold = "50ms")]
+//! #[measure_time(threshold = "50ms")]
 //! fn maybe_slow(n: u32) {
 //!     // Only logs if execution takes more than 50ms
 //!     std::thread::sleep(std::time::Duration::from_millis(n as u64));
@@ -31,9 +31,9 @@
 //! ## Async Support
 //!
 //! ```rust
-//! use hemera::hemera;
+//! use hemera::measure_time;
 //!
-//! #[hemera]
+//! #[measure_time]
 //! async fn fetch_data() -> String {
 //!     // Async function timing
 //!     "data".to_string()
@@ -180,25 +180,25 @@ fn parse_threshold(threshold_str: &str) -> syn::Result<proc_macro2::TokenStream>
 /// # Examples
 ///
 /// ```rust
-/// use hemera::hemera;
+/// use hemera::measure_time;
 ///
-/// #[hemera]
+/// #[measure_time]
 /// fn example() {
 ///     // Function body
 /// }
 ///
-/// #[hemera(name = "MyFunction", level = "debug", threshold = "10ms")]
+/// #[measure_time(name = "MyFunction", level = "debug", threshold = "10ms")]
 /// fn example_with_options() {
 ///     // Function body
 /// }
 ///
-/// #[hemera]
+/// #[measure_time]
 /// async fn async_example() {
 ///     // Async function body
 /// }
 /// ```
 #[proc_macro_attribute]
-pub fn hemera(attr: TokenStream, item: TokenStream) -> TokenStream {
+pub fn measure_time(attr: TokenStream, item: TokenStream) -> TokenStream {
     let input = parse_macro_input!(item as ItemFn);
 
     let config = if attr.is_empty() {
@@ -241,11 +241,11 @@ pub fn hemera(attr: TokenStream, item: TokenStream) -> TokenStream {
 
     let print_stmt = if use_debug {
         quote! {
-            eprintln!("⏱ Function `{}` executed in {:.3?}", #display_name, __hemera_elapsed);
+            eprintln!("[TIMING] Function '{}' executed in {:.3?}", #display_name, __hemera_elapsed);
         }
     } else {
         quote! {
-            println!("⏱ Function `{}` executed in {:.3?}", #display_name, __hemera_elapsed);
+            println!("[TIMING] Function '{}' executed in {:.3?}", #display_name, __hemera_elapsed);
         }
     };
 

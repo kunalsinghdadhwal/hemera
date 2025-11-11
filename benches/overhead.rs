@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use hemera::hemera;
+use hemera::measure_time;
 
 // Function without macro
 fn baseline_sync(n: u32) -> u32 {
@@ -11,7 +11,7 @@ fn baseline_sync(n: u32) -> u32 {
 }
 
 // Function with macro
-#[hemera(threshold = "999s")] // High threshold so it never logs
+#[measure_time(threshold = "999s")] // High threshold so it never logs
 fn instrumented_sync(n: u32) -> u32 {
     let mut sum = 0;
     for i in 0..n {

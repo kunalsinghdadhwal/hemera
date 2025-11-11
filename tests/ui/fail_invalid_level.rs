@@ -1,7 +1,7 @@
-use hemera::hemera;
+use hemera::measure_time;
 
 // Invalid level value
-#[hemera(level = "warn")]
+#[measure_time(level = "warn")]
 fn invalid_level() {}
 
 fn main() {}
