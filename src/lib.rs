@@ -52,10 +52,10 @@
 use proc_macro::TokenStream;
 use quote::quote;
 use syn::{
+    Expr, ItemFn, Lit, Meta, MetaNameValue, Token,
     parse::{Parse, ParseStream},
     parse_macro_input,
     punctuated::Punctuated,
-    Expr, ItemFn, Lit, Meta, MetaNameValue, Token,
 };
 
 /// Configuration for the hemera macro
@@ -84,31 +84,31 @@ impl Parse for HemeraConfig {
 
                     match ident.to_string().as_str() {
                         "name" => {
-                            if let Expr::Lit(expr_lit) = value {
-                                if let Lit::Str(lit_str) = &expr_lit.lit {
-                                    config.name = Some(lit_str.value());
-                                }
+                            if let Expr::Lit(expr_lit) = value
+                                && let Lit::Str(lit_str) = &expr_lit.lit
+                            {
+                                config.name = Some(lit_str.value());
                             }
                         }
                         "level" => {
-                            if let Expr::Lit(expr_lit) = value {
-                                if let Lit::Str(lit_str) = &expr_lit.lit {
-                                    let level = lit_str.value();
-                                    if level != "debug" && level != "info" {
-                                        return Err(syn::Error::new_spanned(
-                                            lit_str,
-                                            "level must be either \"debug\" or \"info\"",
-                                        ));
-                                    }
-                                    config.level = Some(level);
+                            if let Expr::Lit(expr_lit) = value
+                                && let Lit::Str(lit_str) = &expr_lit.lit
+                            {
+                                let level = lit_str.value();
+                                if level != "debug" && level != "info" {
+                                    return Err(syn::Error::new_spanned(
+                                        lit_str,
+                                        "level must be either \"debug\" or \"info\"",
+                                    ));
                                 }
+                                config.level = Some(level);
                             }
                         }
                         "threshold" => {
-                            if let Expr::Lit(expr_lit) = value {
-                                if let Lit::Str(lit_str) = &expr_lit.lit {
-                                    config.threshold = Some(lit_str.value());
-                                }
+                            if let Expr::Lit(expr_lit) = value
+                                && let Lit::Str(lit_str) = &expr_lit.lit
+                            {
+                                config.threshold = Some(lit_str.value());
                             }
                         }
                         _ => {

@@ -1,5 +1,5 @@
 use hemera::measure_time;
-use tokio::time::{sleep, Duration};
+use tokio::time::{Duration, sleep};
 
 #[measure_time]
 async fn fetch_data() -> String {
