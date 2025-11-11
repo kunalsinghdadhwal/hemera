@@ -4,23 +4,6 @@ Cargo.lock
 **/*.rs.bk
 *.pdb
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing
-/tests/ui/*.stderr
-/tests/ui/*.stdout
-/wip
 
 /target/criterion
 
-# Test files
-test_expand.rs
