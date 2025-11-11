@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/kunalsinghdadhwal/hemera/blob/main/LICENSE)
 [![CI](https://github.com/kunalsinghdadhwal/hemera/workflows/CI/badge.svg)](https://github.com/kunalsinghdadhwal/hemera/actions)
 
-**Inevitable timing for Rust functions—measure execution with divine precision.**
+**Inevitable timing for Rust functions measure execution with divine precision.**
 
 Hemera is a lightweight, zero-overhead procedural macro for measuring function execution time in Rust. Named after the Greek primordial goddess of the day, Hemera brings clarity and insight to your code's performance characteristics.
 
