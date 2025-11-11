@@ -165,16 +165,6 @@ tracing = "0.1"
 
 When the `tracing` feature is enabled, Hemera automatically creates tracing spans around your functions.
 
-## Performance
-
-The macro introduces minimal overhead to your functions:
-
-- **Baseline function**: ~0.5 nanoseconds
-- **Instrumented function**: ~36 nanoseconds
-- **Overhead**: ~36 nanoseconds per function call
-
-This overhead is only incurred when timing is active. When using thresholds that prevent logging, the impact is negligible.
-
 ## Roadmap
 
 | Feature | Status |
@@ -188,26 +178,6 @@ This overhead is only incurred when timing is active. When using thresholds that
 | Block-level measurement | Planned |
 | Statistical aggregation | Planned |
 | Custom output formatters | Planned |
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Named after Hemera, the Greek primordial goddess of the day
-- Inspired by the need for simple, efficient timing in Rust
-- Built with love using `syn`, `quote`, and `proc-macro2`
 
 ## Examples
 
